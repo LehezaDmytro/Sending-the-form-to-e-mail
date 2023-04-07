@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/form-styles.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h2 class="form-title">Distributor Application</h2>
+      <p class="form-description">
+        Interested in becoming part of the Perma Blend distribution network?
+        Please fill out the form below and someone from our team will contact
+        you shortly! If you have any questions, please contact
+        info@permablend.com.
+      </p>
+      <form action="send.php" name="form" method="POST">
+        <div class="form-group">
+          <div class="form-group-label">
+            <label class="form-label required" for="first-name"
+              >First Name:</label
+            >
+            <input type="text" id="first-name" name="first-name" />
+          </div>
+          <div class="form-group-label">
+            <label class="form-label required" for="last-name"
+              >Last Name:</label
+            >
+            <input type="text" id="last-name" name="last-name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group-label">
+            <label class="form-label required" for="phone-number"
+              >Phone Number:</label
+            >
+            <input type="tel" id="phone-number" name="phone-number" />
+          </div>
+
+          <div class="form-group-label">
+            <label class="form-label required" for="email">Email:</label>
+            <input type="email" id="email" name="email" />
+          </div>
+        </div>
+        <div class="form-group-label">
+          <label class="form-label required" for="business-name"
+            >Business Name:</label
+          >
+          <input type="text" id="business-name" name="business-name" />
+        </div>
+        <div class="form-group">
+          <div class="form-group-label">
+            <label class="form-label required" for="business-address-1"
+              >Business Address 1:</label
+            >
+            <input
+              type="text"
+              id="business-address-1"
+              name="business-address-1"
+            />
+          </div>
+
+          <div class="form-group-label">
+            <label class="form-label" for="business-address-2"
+              >Business Address 2:</label
+            >
+            <input
+              type="text"
+              id="business-address-2"
+              name="business-address-2"
+            />
+          </div>
+        </div>
+        <div class="form-group-label">
+          <label class="form-label required" for="city">City:</label>
+          <input type="text" id="city" name="city" />
+        </div>
+
+        <div class="form-group-label">
+          <label class="form-label required" for="state-or-province"
+            >State or Province:</label
+          >
+          <input type="text" id="state-or-province" name="state-or-province" />
+        </div>
+        <div class="form-group">
+          <div class="form-group-label">
+            <label class="form-label required" for="country">Country:</label>
+            <input type="text" id="country" name="country" />
+          </div>
+
+          <div class="form-group-label">
+            <label class="form-label required" for="zip-or-postal-code"
+              >Zip or Postal Code:</label
+            >
+            <input
+              type="text"
+              id="zip-or-postal-code"
+              name="zip-or-postal-code"
+            />
+          </div>
+        </div>
+        <div class="form-group-label">
+          <label class="form-label required" for="years-in-business"
+            >How many years in the business?</label
+          >
+          <select id="years-in-business" name="years-in-business">
+            <option value="1-5 years">1-5 years</option>
+            <option value="5-10 years">5-10 years</option>
+            <option value="10-20 years">10-20 years</option>
+            <option value="20+ years">20+ years</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <div class="form-group-label">
+            <label class="form-label required" for="tax-id">Tax ID #:</label>
+            <input type="text" id="tax-id" name="tax-id" />
+          </div>
+
+          <div class="form-group-label">
+            <label class="form-label required" for="website">Website:</label>
+            <input type="text" id="website" name="website" />
+          </div>
+        </div>
+        <div class="form-group-label">
+          <label class="form-label" for="other-brands"
+            >Other Brands You Sell:</label
+          >
+          <textarea id="other-brands" name="other-brands"></textarea>
+        </div>
+
+        <div class="form-group-label">
+          <label class="form-label" for="additional-information"
+            >Any Additional Information:</label
+          >
+          <textarea
+            id="additional-information"
+            name="additional-information"
+          ></textarea>
+        </div>
+
+        <input class="btn-submit" type="submit" value="Submit" />
+      </form>
+    </div>
+    <!-- <script src="/form.js"></script> -->
+  </body>
+</html>
