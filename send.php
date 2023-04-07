@@ -1,23 +1,114 @@
 <?php
-  use PHPMailer\PHPMailer\PHPMailer;
-  use PHPMailer\PHPMailer\Exception;
+  require 'PHPMailer-master/src/PHPMailer.php';
+  require 'PHPMailer-master/src/SMTP.php';
+  require 'PHPMailer-master/src/Exception.php';
 
-  require "PHPMailer-master/src/PHPMailer.php"
-  require "PHPMailer-master/src/Exception.php"
+# проверка, что ошибки нет
+  if (!error_get_last()) {
 
-  $mail = new PHPMailer(true);
-  $mail->CharSet = "UTF-8";
+    // Переменные, которые отправляет пользователь
+    // $name = $_POST['name'] ;
+    // $email = $_POST['email'];
+    // $text = $_POST['text'];
+    // $file = $_FILES['myfile'];
 
-  $name = $_POST["first-name"];
-  $last = $_POST["last-name"];
-  $phone = $_POST["phone-number"];
-  $email = $_POST["email"];
+    $name = $_POST["first-name"];
+    $last = $_POST["last-name"];
+    $phone = $_POST["phone-number"];
+    $email = $_POST["email"];
+    
+    
+    // Формирование самого письма
+    $title = "Заголовок письма";
+    $body = "
+    <h2>Новий лист</h2>
+    <b>Імя:</b> $name<br>
+    <b>Прізвище:</b> $last<br>
+    <b>Телефон:</b> $phone<br>
+    <b>Почта:</b> $email<br><br>
+    ";
+    
+    // Настройки PHPMailer
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    
+    $mail->isSMTP();   
+    $mail->CharSet = "UTF-8";
+    $mail->SMTPAuth   = true;
+    //$mail->SMTPDebug = 2;
+    $mail->Debugoutput = function($str, $level) {$GLOBALS['data']['debug'][] = $str;};
+    
+    // Настройки вашей почты
+    $mail->Host       = 'smtp.gmail.com'; // SMTP сервера вашей почты
+    $mail->Username   = 'legezad'; // Логин на почте
+    $mail->Password   = 'gnwaaagidghuaurq'; // Пароль на почте
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;
+    $mail->setFrom('legezad@gmail.com', 'Dmitro'); // Адрес самой почты и имя отправителя
+    
+    // Получатель письма
+    $mail->addAddress('legeza.dmitriy@icloud.com');  
+    
+    
+    // Прикрипление файлов к письму
+    // if (!empty($file['name'][0])) {
+    //     for ($i = 0; $i < count($file['tmp_name']); $i++) {
+    //         if ($file['error'][$i] === 0) 
+    //             $mail->addAttachment($file['tmp_name'][$i], $file['name'][$i]);
+    //     }
+    // }
+    // Отправка сообщения
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body = $body;    
+    
+    // Проверяем отправленность сообщения
+    if ($mail->send()) {
+        $data['result'] = "success";
+        $data['info'] = "Сообщение успешно отправлено!";
+    } else {
+        $data['result'] = "error";
+        $data['info'] = "Сообщение не было отправлено. Ошибка при отправке письма";
+        $data['desc'] = "Причина ошибки: {$mail->ErrorInfo}";
+    }
+    
+} else {
+    $data['result'] = "error";
+    $data['info'] = "В коде присутствует ошибка";
+    $data['desc'] = error_get_last();
+}
 
-  $mail->addAddress("legezad@gmail.com");
-  $mail->Subject = "Хело еврібаді";
-  $mail->Body = $name . ' ' . $last . ' ' . $phone . ' ' . $email;
+// Отправка результата
+header('Content-Type: application/json');
+echo json_encode($data);
+  
+  
+  
+  
+  // use PHPMailer\PHPMailer\PHPMailer;
+  // use PHPMailer\PHPMailer\Exception;
 
-  $mail->send();
+  // require "PHPMailer-master/src/PHPMailer.php"
+  // require "PHPMailer-master/src/Exception.php"
+
+  // $mail = new PHPMailer(true);
+  // $mail->CharSet = "UTF-8";
+
+  // $name = $_POST["first-name"];
+  // $last = $_POST["last-name"];
+  // $phone = $_POST["phone-number"];
+  // $email = $_POST["email"];
+
+  // $mail->addAddress("legezad@gmail.com");
+  // $mail->Subject = "Хело еврібаді";
+  // $mail->Body = $name . ' ' . $last . ' ' . $phone . ' ' . $email;
+
+  // $mail->send();
+
+
+
+
+
+
 // require_once('phpmailer/PHPMailerAutoload.php');
 
 // // Отримуємо дані з форми
