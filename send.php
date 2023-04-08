@@ -38,12 +38,12 @@
     $mail->Debugoutput = function($str, $level) {$GLOBALS['data']['debug'][] = $str;};
     
     // Настройки вашей почты
-    $mail->Host       = 'smtp.gmail.com'; // SMTP сервера вашей почты
-    $mail->Username   = 'legezad'; // Логин на почте
-    $mail->Password   = 'gnwaaagidghuaurq'; // Пароль на почте
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port       = 465;
-    $mail->setFrom('legezad@gmail.com', 'Dmitro'); // Адрес самой почты и имя отправителя
+    $mail->Host       = ''; // SMTP сервера вашей почты
+    $mail->Username   = ''; // Логин на почте
+    $mail->Password   = ''; // Пароль на почте
+    $mail->SMTPSecure = '';
+    $mail->Port       = ;
+    $mail->setFrom(''); // Адрес самой почты и имя отправителя
     
     // Получатель письма
     $mail->addAddress('legeza.dmitriy@icloud.com');  
